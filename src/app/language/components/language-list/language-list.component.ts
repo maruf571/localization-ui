@@ -26,7 +26,7 @@ export class LanguageListComponent implements OnInit {
     this.projectId = projectId;
     console.log(projectId);
     if (projectId != null) {
-      this.languageService.findAll("?projectId=" + projectId).subscribe(resp => {
+      this.languageService.findAll("projects/" + projectId).subscribe(resp => {
         console.log(resp);
         this.languages = resp;
       });

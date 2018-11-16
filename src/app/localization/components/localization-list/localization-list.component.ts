@@ -37,7 +37,7 @@ export class LocalizationListComponent implements OnInit {
   }
 
   addOrEdit(localizationId) {
-    console.log();
+    console.log(localizationId);
     this.router.navigate(
       ['/localization/localization-single'], {
         queryParams: {
