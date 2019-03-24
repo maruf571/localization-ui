@@ -35,6 +35,7 @@ pipeline {
         }
 
         stage('Deploy Image') {
+            agent any
             when { branch 'master' }
             steps {
                 sh 'kubectl set image deployments/localization-ui localization-ui=docker.io/maruf571/localization-ui:1.0.0'
