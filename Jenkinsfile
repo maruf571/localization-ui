@@ -26,17 +26,18 @@ pipeline {
         }
 
         stage('Build and Push Docker Image') {
-        agent any
-            
+            agent any
             steps {
-                withCredentials([string(credentialsId: 'docker-password', variable: 'DOCKER_PASSWORD')]) {
-                    echo "My password is '${DOCKER_PASSWORD}'!"
-        
                     unstash 'dist'
                     sh 'docker build -t maruf571/localization-ui:1.0.0 .'
-                    sh 'docker login -u maruf571 -p ${DOCKER_PASSWORD} docker.io'
                     sh 'docker push maruf571/localization-ui:1.0.0'
-                }
+            }
+        }
+
+        stage('Deploy Image') {
+            when { branch 'master' }
+            steps {
+                sh 'kubectl set image deployments/localization-ui localization-ui=docker.io/maruf571/localization-ui:1.0.0'
             }
         }
         
