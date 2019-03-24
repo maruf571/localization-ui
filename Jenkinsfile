@@ -20,21 +20,19 @@ pipeline {
             }
             steps {
                 unstash 'node_modules'
-                sh 'yarn build --prod'
+                sh 'yarn build'
                 stash includes: 'dist/', name: 'dist'
             }
         }
 
         stage('Build and Push Docker Image') {
         agent any
-            environment {
-                DOCKER_PASSWORD = credentials('docker-password')
-            }
+            
             steps {
-                 echo '${DOCKER_PASSWORD}'
+                 echo '${env.DOCKER_PASSWORD}'
                 unstash 'dist'
                 sh 'docker build -t maruf571/localization-ui:1.0.1 .'
-                sh 'docker login -u maruf571 -p ${DOCKER_PASSWORD} docker.io'
+                sh 'docker login -u maruf571 -p ${env.DOCKER_PASSWORD} docker.io'
                 sh 'docker push $DOCKER_PUSH_URL/localization-ui:1.0.0'
             }
         }
