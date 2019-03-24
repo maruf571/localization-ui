@@ -6,7 +6,7 @@ pipeline {
 
         stage('Fetch dependencies') {
             agent {
-                docker 'circleci/node:9.3-stretch-browsers'
+                docker 'node:11'
             }
             steps {
                 sh 'yarn'
@@ -16,7 +16,7 @@ pipeline {
 
         stage('Compile') {
             agent {
-                docker 'circleci/node:9.3-stretch-browsers'
+                docker 'node:11'
             }
             steps {
                 unstash 'node_modules'
@@ -31,9 +31,10 @@ pipeline {
                 DOCKER_PASSWORD = credentials('docker-password')
             }
             steps {
+                 echo '${DOCKER_PASSWORD}'
                 unstash 'dist'
                 sh 'docker build -t maruf571/localization-ui:1.0.1 .'
-                sh 'docker login -u maruf571 -p $DOCKER_PASSWORD docker.io'
+                sh 'docker login -u maruf571 -p ${DOCKER_PASSWORD} docker.io'
                 sh 'docker push $DOCKER_PUSH_URL/localization-ui:1.0.0'
             }
         }
