@@ -29,11 +29,13 @@ pipeline {
         agent any
             
             steps {
-                 echo '${env.DOCKER_PASSWORD}'
-                unstash 'dist'
-                sh 'docker build -t maruf571/localization-ui:1.0.0 .'
-                sh 'docker login -u maruf571 -p mahmud571 docker.io'
-                sh 'docker push maruf571/localization-ui:1.0.0'
+                withCredentials([string(credentialsId: 'docker-password', variable: 'DOCKER_PASSWORD')]) {
+                    echo "My password is '${DOCKER_PASSWORD}'!"
+        
+                    unstash 'dist'
+                    sh 'docker build -t maruf571/localization-ui:1.0.0 .'
+                    sh 'docker login -u maruf571 -p $DOCKER_PASSWORD docker.io'
+                    sh 'docker push maruf571/localization-ui:1.0.0'
             }
         }
         
