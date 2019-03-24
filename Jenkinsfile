@@ -34,7 +34,7 @@ pipeline {
         
                     unstash 'dist'
                     sh 'docker build -t maruf571/localization-ui:1.0.0 .'
-                    sh 'docker login -u maruf571 -p $DOCKER_PASSWORD docker.io'
+                    sh 'docker login -u maruf571 -p ${DOCKER_PASSWORD} docker.io'
                     sh 'docker push maruf571/localization-ui:1.0.0'
                 }
             }
