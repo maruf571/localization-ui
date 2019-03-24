@@ -29,8 +29,8 @@ pipeline {
             agent any
             steps {
                     unstash 'dist'
-                    sh 'docker build -t maruf571/localization-ui:1.0.0 .'
-                    sh 'docker push maruf571/localization-ui:1.0.0'
+                    sh 'docker build -t maruf571/localization-ui:1.0.1 .'
+                    sh 'docker push maruf571/localization-ui:1.0.1'
             }
         }
 
@@ -38,7 +38,7 @@ pipeline {
             agent any
             when { branch 'master' }
             steps {
-                sh 'kubectl set image deployments/localization-ui localization-ui=docker.io/maruf571/localization-ui:1.0.0'
+                sh 'kubectl set image deployments/localization-ui localization-ui=docker.io/maruf571/localization-ui:1.0.1'
             }
         }
         
