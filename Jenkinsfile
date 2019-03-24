@@ -2,7 +2,7 @@ pipeline {
 
     agent none
     environment {
-     image = "maruf571/localization-ui:1.0.4"
+     image = "maruf571/localization-ui:1.0.5"
     }
 
     stages {
