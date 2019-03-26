@@ -41,7 +41,7 @@ pipeline {
             agent any
             when { branch 'master' }
             steps {
-                sh 'kubectl apply -f localization-deployment.yml'
+                sh 'kubectl apply -f localization-ui-deployment.yml'
                 //sh 'kubectl set image deployments/localization-ui localization-ui=docker.io/${image}'
             }
         }
