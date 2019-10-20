@@ -1,16 +1,12 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import {AppUrl} from './app-url';
 
 const appRoutes: Routes = [
-
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },
-  { path: 'home', loadChildren: './home/home.module#HomeModule' },
-  { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-  { path: 'project', loadChildren: './project/project.module#ProjectModule' },
-  { path: 'language', loadChildren: './language/language.module#LanguageModule' },
-  { path: 'localization', loadChildren: './localization/localization.module#LocalizationModule' },
-
+  { path: AppUrl.public, redirectTo: AppUrl.home, pathMatch: 'full' },
+  { path: AppUrl.auth, loadChildren: './auth/auth.module#AuthModule' },
+  { path: AppUrl.private, loadChildren: './private/private.module#PrivateModule' },
+  { path: AppUrl.home, loadChildren: './public/public.module#PublicModule' },
 ];
 
 @NgModule({

@@ -2,7 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../shared/service/auth.service';
+import {AppUrl} from '../../app-url';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class SigninComponent implements OnInit {
     ngOnInit() {
   
         // get return url from route parameters or default to '/'
-        this.returnUrl = this.activeRoute.snapshot.queryParams['returnUrl'] || '/dashboard';      
+        this.returnUrl = this.activeRoute.snapshot.queryParams['returnUrl'] || AppUrl.privateDashboard;
         if(this.authenticationService.isLoggedIn()){
             this.router.navigate([this.returnUrl]);   
             return;

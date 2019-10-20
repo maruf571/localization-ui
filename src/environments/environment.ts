@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  REST_API_URL: 'http://35.246.146.49/api/'
+  REST_API_URL: 'http://localhost:5001/api/'
 };

@@ -1,18 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
-import { AppComponent } from './app.component';
-import { AppRouteModule } from './app.route';
-import { HomeModule } from './home/home.module';
-import { AuthModule } from './auth/auth.module';
-import { PostModule } from './post/post.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DashboardModule } from './dashboard/dashboard.module';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './auth/auth.interceptor';
-import { LanguageModule } from './language/language.module';
-import { LocalizationModule } from './localization/localization.module';
+import {AppComponent} from './app.component';
+import {AppRouteModule} from './app.route';
+import {HomeModule} from './public/home.module';
+import {AuthModule} from './auth/auth.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {AuthInterceptor} from './shared/interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -21,15 +16,10 @@ import { LocalizationModule } from './localization/localization.module';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
     BrowserAnimationsModule,
     HttpClientModule,
     HomeModule,
     AuthModule,
-    PostModule,
-    LanguageModule,
-    LocalizationModule,
-    DashboardModule,
     AppRouteModule,
   ],
 

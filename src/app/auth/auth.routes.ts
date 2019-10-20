@@ -1,6 +1,6 @@
 import { NgModule, ContentChildren } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthLayoutComponent } from '../layout/auth-layout/auth-layout.component';
+import { AuthLayoutComponent } from '../shared/layout/auth-layout/auth-layout.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { ConfirmSignupComponent } from './confirm-signup/confirm.signup.component';
