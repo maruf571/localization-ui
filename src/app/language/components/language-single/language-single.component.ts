@@ -10,7 +10,7 @@ import { LanguageService } from '../../language.service';
 
 export class LanguageSingleComponent implements OnInit {
 
-  @ViewChild('languageName')
+  @ViewChild('languageName', { static: true })
   private elementRef: ElementRef;
 
   language:any = {};

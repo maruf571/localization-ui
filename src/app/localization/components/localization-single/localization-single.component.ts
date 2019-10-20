@@ -11,7 +11,7 @@ import { LanguageService } from '../../../language/language.service';
 
 export class LocalizationSingleComponent implements OnInit {
 
-  @ViewChild('customerName')
+  @ViewChild('customerName', { static: true })
   private elementRef: ElementRef;
 
   localization:any = {};
